@@ -12,10 +12,10 @@ export const HeaderComponent: React.FunctionComponent<Props> = props => {
   const { headerGroups } = props;
   return (
     <TableHead>
-      {headerGroups.map(headerGroup => (
-        <TableRow {...headerGroup.getHeaderGroupProps()}>
-          {headerGroup.headers.map(column => (
-            <CellComponent {...column.getHeaderProps()}>
+      {headerGroups.map((headerGroup, index) => (
+        <TableRow key={index} {...headerGroup.getHeaderGroupProps()}>
+          {headerGroup.headers.map((column, index) => (
+            <CellComponent key={index} {...column.getHeaderProps()}>
               {column.render('Header')}
             </CellComponent>
           ))}

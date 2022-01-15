@@ -11,7 +11,7 @@ describe('common/table/RowComponent', () => {
     };
 
     // Act
-    const { getByText, getByTestId } = render(
+    const { getByText, getByTestId } = renderRow(
       <RowComponent {...props}>
         <td>{'Test rowData'}</td>
       </RowComponent>
@@ -29,7 +29,7 @@ describe('common/table/RowComponent', () => {
     };
 
     // Act
-    const { getByText } = render(
+    const { getByText } = renderRow(
       <RowComponent {...props}>
         <td>{'Test rowData 1'}</td>
         <td>{'Test rowData 2'}</td>
@@ -41,3 +41,10 @@ describe('common/table/RowComponent', () => {
     expect(getByText('Test rowData 2')).toBeInTheDocument();
   });
 });
+
+const renderRow = (element: React.ReactChild) =>
+  render(
+    <table>
+      <thead>{element}</thead>
+    </table>
+  );
