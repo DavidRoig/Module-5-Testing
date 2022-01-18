@@ -16,6 +16,10 @@ jobs:
       - name: Install
         run: npm run build
       - run: echo "💡 The ${{ github.repository }} repository has been built"
-      - run: echo "Running Unit Test for  repository ${{ github.repository }}"
+      - run: echo "Running Unit Test for repository ${{ github.repository }}"
       - name: Unit Test
         run: npm run test
+      - run: echo "Running E2E Test for repository ${{ github.repository }}"
+      - name: E2E Test
+        run: npm run test:e2e:ci
+

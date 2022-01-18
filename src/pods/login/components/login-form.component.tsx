@@ -27,6 +27,7 @@ export const LoginFormComponent: React.FunctionComponent<Props> = props => {
             variant="outlined"
           />
           <TextFieldComponent
+            id="password"
             name="password"
             label={`${literals.components.fields.password} *`}
             type="password"
