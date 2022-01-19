@@ -21,7 +21,7 @@ describe('common/table/HeaderComponent', () => {
     };
 
     // Act
-    const { getByText } = render(<HeaderComponent {...props} />);
+    const { getByText } = renderHeader(<HeaderComponent {...props} />);
 
     // Assert
     expect(getByText('Test label')).toBeInTheDocument();
@@ -53,10 +53,13 @@ describe('common/table/HeaderComponent', () => {
     };
 
     // Act
-    const { getByText } = render(<HeaderComponent {...props} />);
+    const { getByText } = renderHeader(<HeaderComponent {...props} />);
 
     // Assert
     expect(getByText('Test label 1')).toBeInTheDocument();
     expect(getByText('Test label 2')).toBeInTheDocument();
   });
 });
+
+const renderHeader = (element: React.ReactChild) =>
+  render(<table>{element}</table>);

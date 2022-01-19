@@ -7,7 +7,7 @@ describe('common/table/CellComponent', () => {
     // Arrange
 
     // Act
-    const { getByText } = render(
+    const { getByText } = renderCell(
       <CellComponent>
         <h1>Test content</h1>
       </CellComponent>
@@ -17,3 +17,12 @@ describe('common/table/CellComponent', () => {
     expect(getByText('Test content')).toBeInTheDocument();
   });
 });
+
+const renderCell = (element: React.ReactChild) =>
+  render(
+    <table>
+      <thead>
+        <tr>{element}</tr>
+      </thead>
+    </table>
+  );
