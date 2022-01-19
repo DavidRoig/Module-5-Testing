@@ -5,7 +5,7 @@ import * as promiseTracker from 'react-promise-tracker/lib/trackerHook';
 import { SpinnerComponent } from './spinner.component';
 
 describe('SpinnerComponent tests suite', () => {
-  xit('When there is no promises, modal should not be visible.', () => {
+  it('When there is no promises, modal should not be visible.', () => {
     //Arrange
     jest
       .spyOn(promiseTracker, 'usePromiseTracker')
@@ -19,7 +19,7 @@ describe('SpinnerComponent tests suite', () => {
     expect(modalSpinner).not.toBeInTheDocument();
   });
 
-  xit('When there is an active promise, modal should be visible.', () => {
+  it('When there is an active promise, modal should be visible.', () => {
     //Arrange
     jest
       .spyOn(promiseTracker, 'usePromiseTracker')
@@ -37,18 +37,17 @@ describe('SpinnerComponent tests suite', () => {
     //Arrange
     jest
       .spyOn(promiseTracker, 'usePromiseTracker')
-      .mockImplementationOnce(() => ({ promiseInProgress: true }))
-      .mockImplementationOnce(() => ({ promiseInProgress: false }));
+      .mockImplementation(() => ({ promiseInProgress: true }));
+
+    jest
+      .spyOn(promiseTracker, 'usePromiseTracker')
+      .mockImplementation(() => ({ promiseInProgress: false }));
 
     //Act
     render(<SpinnerComponent />);
 
     //Assert
-    let modalSpinner = screen.getByRole('presentation');
-    expect(modalSpinner).toBeInTheDocument();
-
-    // render(<SpinnerComponent />);
-    // modalSpinner = screen.queryByRole('presentation');
-    // expect(modalSpinner).not.toBeInTheDocument();
+    const modalSpinner = screen.queryByRole('presentation');
+    expect(modalSpinner).not.toBeInTheDocument();
   });
 });
